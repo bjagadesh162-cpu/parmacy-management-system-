@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Pharmacy Management System – ChatGPT Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Online Pharmacy <span>Management</span></h1><p>Search medicines • Check prices • Place orders</p></header>
+<main>
+  <section class="panel" id="account">
+    <h2>Customer / Admin Login</h2>
+    <div class="form-grid">
+      <input id="email" type="email" placeholder="Email">
+      <input id="password" type="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+    </div>
+    <details><summary>New customer? Create an account</summary>
+      <div class="form-grid">
+        <input id="regName" placeholder="Full name"><input id="regEmail" type="email" placeholder="Email">
+        <input id="regPhone" placeholder="Phone"><input id="regPassword" type="password" placeholder="Password (6+ characters)">
+        <button onclick="register()">Register</button>
+      </div>
+    </details>
+    <p id="session"></p><button class="secondary" onclick="logout()">Logout</button>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><div><h2>Available Medicines</h2><p>Search by medicine name or category.</p></div>
+      <input id="search" placeholder="Search medicines..." oninput="loadMedicines()"></div>
+    <div id="medicines" class="medicine-grid"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Your Cart</h2><div id="cart"></div><button onclick="placeOrder()">Place Order</button>
+  </section>
+
+  <section class="panel admin-only" id="adminPanel" hidden>
+    <h2>Admin: Add Medicine</h2>
+    <div class="form-grid">
+      <input id="mName" placeholder="Medicine name"><input id="mCategory" placeholder="Category">
+      <input id="mManufacturer" placeholder="Manufacturer"><input id="mPrice" type="number" min="0" step="0.01" placeholder="Price">
+      <input id="mStock" type="number" min="0" placeholder="Stock"><input id="mExpiry" type="date">
+      <button onclick="addMedicine()">Add Medicine</button>
+    </div>
+    <h3>Low stock / expiry alerts</h3><div id="alerts"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Order History</h2><button class="secondary" onclick="loadOrders()">Refresh Orders</button><div id="orders"></div>
+  </section>
+  <p id="message" role="status"></p>
+</main>
+<footer>Academic mini project • Use only as a demonstration; not for real medicine dispensing.</footer>
+<script src="app.js"></script>
+</body></html>
